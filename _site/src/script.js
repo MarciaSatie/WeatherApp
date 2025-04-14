@@ -3,5 +3,7 @@
 // Methods From cityFocus script file
 import * as cityFocus from './cityFocus.js';
 
-
-cityFocus.updateCard("Dublin","super hot!!");
+cityFocus.updateTitles("Dublin");
+cityFocus.updateCardTemp("super hot!!");
+cityFocus.updateCardWind("15 km/h");
+cityFocus.updateSmallWeekCards();
