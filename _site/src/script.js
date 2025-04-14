@@ -1,5 +1,7 @@
 'use strict';
 
-const newCityName = "Dublin";
-console.log(newCityName);
-document.getElementById("cityName").textContent = newCityName;
+// Methods From cityFocus script file
+import * as cityFocus from './cityFocus.js';
+
+
+cityFocus.updateCard("Dublin","super hot!!");
