@@ -51,9 +51,7 @@ JavaScript: Handles data fetching and DOM manipulation.​
 **document.createElement**(at file: cityFocus.js): uses Javascript to create a new HTML element at this case a div.
 reference: https://www.w3schools.com/jsref/met_document_createelement.asp
 
-**innerHTML** (at file: cityFocus.js): to manipulate the content inside of the tag, at this case is used to generate more html information inside of a new div created by javascript.
-reference: https://www.w3schools.com/jsref/prop_html_innerhtml.asp
-https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
+
 
 
 
