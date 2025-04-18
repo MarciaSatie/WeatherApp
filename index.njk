@@ -2,7 +2,7 @@
 layout: "layout.njk"
 ---
 <script src="./src/cityFocus.js"></script>
-<!-- Javascript -->
+ <!-- Javascript -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         
@@ -12,12 +12,12 @@ layout: "layout.njk"
     console.log(dayWeekNumber);
 
     const cityChoice ="amsterdam";
-
+    const celsius =" °C";    
     const cityData = dotify.cityFocus.getCityObj(cityChoice);
     dotify.cityFocus.updateTitles(cityChoice);
-    dotify.cityFocus.updateCardTemp(cityData.daily.temperature_2m_max[0]);
+    dotify.cityFocus.updateCardTemp(cityData.daily.temperature_2m_max[0]+celsius);
     dotify.cityFocus.updateCardWind(cityData.daily.wind_speed_10m_max[0]);
-    dotify.cityFocus.updateSmallWeekCards(days, dayWeekNumber, cityData);
+    dotify.cityFocus.updateSmallWeekCards(days, dayWeekNumber, cityData,celsius);
 });
 
 </script>
@@ -46,13 +46,13 @@ layout: "layout.njk"
 
         </div>
 </section>
-<section >
-    <div  class="container">
-        <div id="weekcards" class="columns">
+<section class="section">
+    <div class="container">
+        <div id="weekcards" class="columns is-multiline is-centered">
+
             <!--This area will be filled using Javascript-->
         </div>
-        
     </div>
-
 </section>
+
 <br><br>

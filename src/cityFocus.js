@@ -27,7 +27,7 @@
   // ----------------------------
   // Update weekly forecast cards
   // ----------------------------
-  dotify.cityFocus.updateSmallWeekCards = function(days, dayWeekNumber, cityData) {
+  dotify.cityFocus.updateSmallWeekCards = function(days, dayWeekNumber, cityData,celsius) {
     const weekcards = document.getElementById("weekcards");
 
     const weekSliceStart = days.slice(dayWeekNumber);
@@ -48,8 +48,8 @@
         <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center">
           <h1 class="title is-size-5">${day}</h1>
           <img src="assets/sun.png" class="image is-64x64">
-          <p>Min ${min}</p>
-          <p>Max ${max}</p>
+          <p>Min ${min} ${celsius}</p>
+          <p>Max ${max} ${celsius}</p>
         </div>
       `;
 
