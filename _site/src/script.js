@@ -16,6 +16,6 @@ console.log(cityData.latitude);
 
 
 cityFocus.updateTitles(cityChoice);
-cityFocus.updateCardTemp(cityData.daily.temperature_2m_max[dayWeekNumber]);
-cityFocus.updateCardWind(cityData.daily.wind_speed_10m_max[dayWeekNumber]);
+cityFocus.updateCardTemp(cityData.daily.temperature_2m_max[0]);
+cityFocus.updateCardWind(cityData.daily.wind_speed_10m_max[0]);
 cityFocus.updateSmallWeekCards(days,dayWeekNumber,cityData);

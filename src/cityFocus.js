@@ -19,17 +19,25 @@ export function updateCardWind( text) {
 
 export function updateSmallWeekCards(days,dayWeekNumber,cityData){
   const weekcards = document.getElementById("weekcards");
+  
+  // reorder array for today's date having index 0 (to match woith Today's value from wetherDate's app). If today's week date is Friday, this will be the 1st day in the week day list matching with Today's value from WeatherData file.
+
+  const weekSliceStart = days.slice(dayWeekNumber, days.lenght);
+  const weekSliceEnd = days.slice(0,dayWeekNumber);
+  const weekReodered = weekSliceStart.concat(weekSliceEnd);
+  console.log(weekReodered);
+  const todayIndex = 0;
+  let count =0;
 
   const dayName = days[dayWeekNumber];// return a number  from 0 (Sunday) to 6 (Saturday).
-  // using for each to loop though the array of days;
-  // for each day will call an annonimous function that will manipulate the HTML. 
-  //So I don't need to repeat the code for each day of the week.
-  days.forEach(day => {
+ 
+  
+  weekReodered.forEach(day => {
     const column = document.createElement("div");// creates a new div element
     column.className = "column is-one-fifth"// manipulate the class from each new div
 
-    const min = cityData.daily.temperature_2m_min[dayWeekNumber];
-    const max =cityData.daily.temperature_2m_max[dayWeekNumber];
+    const min = cityData.daily.temperature_2m_min[todayIndex+count];
+    const max =cityData.daily.temperature_2m_max[todayIndex+count];
 
     column.innerHTML = `
       <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center">
@@ -41,6 +49,7 @@ export function updateSmallWeekCards(days,dayWeekNumber,cityData){
     `;// add new content inside of this div.
 
   weekcards.appendChild(column);// append as a child to teh div with id weekcards.
+  count++;
 });
 }
 
@@ -53,4 +62,3 @@ export function getCityObj(cityName){
    const cityData = weatherData[key];
   return cityData;
 }
-
