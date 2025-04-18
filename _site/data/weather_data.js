@@ -1,5 +1,6 @@
-export const weatherData = {
-  "amsterdam_daily": {
+const weatherData = {
+  "amsterdam_daily": 
+  {
     "latitude": 52.36,
     "longitude": 4.82,
     "generationtime_ms": 0.18203258514404297,

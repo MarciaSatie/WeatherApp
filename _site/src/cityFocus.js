@@ -1,6 +1,4 @@
 
-import { weatherData } from './weather_data.js'; 
-
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const today = new Date();// javascript premade object that returns current day.

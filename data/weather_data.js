@@ -1,4 +1,4 @@
-export const weatherData = {
+const weatherData = {
   "amsterdam_daily": 
   {
     "latitude": 52.36,

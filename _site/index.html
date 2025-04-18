@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-
   <title>Weather App</title>
+  <script src="../data/weather_data.js"></script>
 </head>
 <body>
     
@@ -61,22 +61,8 @@
 
 </section>
 <br><br>
-<script type="module" src="/src/cityFocus.js">
-    'use strict';
-
-    document.addEventListener("DOMContentLoaded", () => {
-
-        const cityChoice ="amsterdam";
 
 
-        //cityFocus.getCityObj("amsterdam");
-
-        cityFocus.updateTitles(cityChoice);
-        cityFocus.updateCardTemp("super hot!!");
-        cityFocus.updateCardWind("city.daily.temperature_2m_max[0]");
-        cityFocus.updateSmallWeekCards();
-    });
-</script>
   </main>
   <script type="module" src="src/script.js"></script>  
  
