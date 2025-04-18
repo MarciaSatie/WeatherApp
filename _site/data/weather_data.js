@@ -1,4 +1,4 @@
-const weatherData = {
+dotify.weatherData = {
   "amsterdam_daily": 
   {
     "latitude": 52.36,
