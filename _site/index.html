@@ -93,6 +93,8 @@
     const cityChoice = dotify.preferences.city;
     
     const cityData = dotify.utils.getCityObj(cityChoice);
+    //const cityHourly = dotify.utils.
+    dotify.utils.updateCardRightNow()
     dotify.utils.updateTitles(cityChoice);
     dotify.utils.updateCardTemp(cityData.daily.temperature_2m_max[0]);
     dotify.utils.updateCardWind(cityData.daily.wind_speed_10m_max[0]);
@@ -103,27 +105,47 @@
 
 <!-- HTML code -->
 <section>
-    <body class="container">
-        <div class="columns">
-            <div class="column">
+    <div class="fixed-grid">
+        <div class="grid">
+
+            <div class="cell">
                 <img src="assets/sun.png" class="image is-128sx128">
             </div>
-            <div class="column">
-                <div class="box has-background-primary">
-                    <h1 class="title is-size-5">Max Temp</h1>
+            
+            <!-- Max Temp and Max Wind -->
+            <div class="cell">
+                <div class="fixed-grid">
+                    <div class="grid">
+                        <div class="cell is-col-span-2">
+                            <div class="box has-background-primary">
+                                <h1 class="title is-size-5">Right Now</h1>
+            
+                                <p id="cardRN" ></p>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="box has-background-primary">
+                                <h1 class="title is-size-5">Max Temp</h1>
+            
+                                <p id="card1" ></p>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="box has-background-primary">
+                                <h1 class="title is-size-5">Max Wind</h1>
+            
+                                <p id="cardWind" ></p>
+                            </div>
+                        </div>
+    
+                    </div>
 
-                    <p id="card1" ></p>
                 </div>
             </div>
-            <div class="column">
-                <div class="box has-background-primary">
-                    <h1 class="title is-size-5">Max Wind</h1>
-
-                    <p id="cardWind" ></p>
-                </div>
-            </div>
-
         </div>
+
+    </div>
+
 </section>
 <section class="section">
     <div class="container">
