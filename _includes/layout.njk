@@ -9,12 +9,12 @@
   <script src="../data/weather_data.js"></script>
 </head>
 <body>
-    
-  {% include "header.njk" %}
-  <br>
-  <main class="m-5">
-    {{content | safe}}
-  </main>
- 
+  <div style="max-width: 1200px; margin: 0 auto;">
+    {% include "header.njk" %}
+    <br>
+    <main class="m-5">
+      {{content | safe}}
+    </main>
+  </div>
 </body>
 </html>

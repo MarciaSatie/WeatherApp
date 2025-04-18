@@ -11,16 +11,19 @@ layout: "layout.njk"
     const today = new Date();// javascript premade object that returns current day.
     const dayWeekNumber = today.getDay();// return a number  from 0 (Sunday) to 6 (Saturday)
     console.log(dayWeekNumber);
-
+    let hour = today.getHours();   
+    console.log(hour);
     const cityChoice = dotify.preferences.city;
     
     const cityData = dotify.utils.getCityObj(cityChoice);
     const cityHourly = dotify.utils.getHourObj(cityChoice);
-    dotify.utils.updateCardRightNow(cityHourly.hourly.temperature_2m_max)
+    dotify.utils.updateCardRightNow(cityHourly.hourly.temperature_2m[hour],cityHourly.hourly.wind_speed_10m[hour])
     dotify.utils.updateTitles(cityChoice);
     dotify.utils.updateCardTemp(cityData.daily.temperature_2m_max[0]);
     dotify.utils.updateCardWind(cityData.daily.wind_speed_10m_max[0]);
     dotify.utils.updateSmallWeekCards(days, dayWeekNumber, cityData);
+
+    
 });
 
 </script>

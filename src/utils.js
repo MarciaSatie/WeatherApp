@@ -26,8 +26,18 @@ dotify.utils.updateTitles = (cityName) => {
 // ----------------------------
 // Update main card info
 // ----------------------------
-dotify.utils.updateCardRightNow = (text) => {
-  document.getElementById("cardRN").textContent = text + celsius;
+dotify.utils.updateCardRightNow = (text1, text2) => {
+  const divParent = document.getElementById("cardRN");
+  divParent.innerHTML = ""; // clear existing content
+
+  const column = document.createElement("div");
+  column.innerHTML = `
+    <div class="is-flex is-justify-content-space-between" style="width: 80%;">
+      <p>Temperature: ${text1} ${celsius}</p>
+      <p>Wind: ${text2} ${celsius}</p>
+    </div>
+  `;
+  divParent.appendChild(column);
 };
 
 dotify.utils.updateCardTemp = (text) => {
@@ -89,7 +99,7 @@ dotify.utils.getCityObj = (cityName) => {
 // ----------------------------
 // Get weather hour object for city
 // ----------------------------
-dotify.utils.getObj = (cityName) => {
+dotify.utils.getHourObj = (cityName) => {
   const key = `${cityName}_hourly`;
   console.log("Fetching weather data for:", key);
   return dotify.weatherData[key];
