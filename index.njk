@@ -1,7 +1,28 @@
 ---
 layout: "layout.njk"
 ---
- 
+<script src="./src/cityFocus.js"></script>
+<!-- Javascript -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const today = new Date();// javascript premade object that returns current day.
+    const dayWeekNumber = today.getDay();// return a number  from 0 (Sunday) to 6 (Saturday)
+    console.log(dayWeekNumber);
+
+    const cityChoice ="amsterdam";
+
+    const cityData = dotify.cityFocus.getCityObj(cityChoice);
+    dotify.cityFocus.updateTitles(cityChoice);
+    dotify.cityFocus.updateCardTemp(cityData.daily.temperature_2m_max[0]);
+    dotify.cityFocus.updateCardWind(cityData.daily.wind_speed_10m_max[0]);
+    dotify.cityFocus.updateSmallWeekCards(days, dayWeekNumber, cityData);
+});
+
+</script>
+
+<!-- HTML code -->
 <section>
     <body class="container">
         <div class="columns">
@@ -35,4 +56,3 @@ layout: "layout.njk"
 
 </section>
 <br><br>
-

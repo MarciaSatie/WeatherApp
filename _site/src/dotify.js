@@ -1,5 +1,7 @@
-
-window.dotify = window.dotify || {};
-
-// Add weatherData namespace
-dotify.weatherData = {};
+// dotify.js
+window.dotify = {
+    weatherData: {},
+    cityFocus: {},
+    components: {}
+  };
+  
