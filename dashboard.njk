@@ -1,0 +1,51 @@
+---
+layout: "layout.njk"
+title: Dashboard
+---
+<script src="/src/preferences.js" type="module"></script>
+<script src="/src/utils.js"></script>
+ <!-- Javascript -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        //Updating Title
+        document.getElementById("cityName").textContent = "Dashboard";
+
+        //Filling city cards
+        const cityCards = document.getElementById("dashcards");
+        const cityList = dotify.preferences.arrayCity;
+
+        const todayIndex = 0;
+        let count = 0;
+
+        cityList.forEach(city => {
+        const column = document.createElement("div");
+        column.className = "column is-one-fifth";
+
+        const cityData =  dotify.utils.getCityObj(city);
+        const min = cityData.daily.temperature_2m_min[todayIndex + count];
+        const max = cityData.daily.temperature_2m_max[todayIndex + count];
+
+        column.innerHTML = `
+            <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center">
+            <h1 class="title is-size-5">${city}</h1>
+            <img src="assets/sun.png" class="image is-64x64">
+            <p>Min ${min} ${celsius}</p>
+            <p>Max ${max} ${celsius}</p>
+            </div>
+        `;
+
+        cityCards.appendChild(column);
+        count++;
+        });
+    });
+</script>
+
+<!-- HTML code -->
+<section class="section">
+    <div class="container">
+        <div id="dashcards" class="columns is-multiline is-centered">
+
+            <!--This area will be filled using Javascript-->
+        </div>
+
+<br><br>

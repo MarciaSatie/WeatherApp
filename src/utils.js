@@ -1,14 +1,14 @@
-// cityFocus.js
+// utils.js
 
-(function () {
+
   const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const today = new Date();
   const dayName = days[today.getDay()]; // e.g., "Friday"
-
+  const celsius =" °C";    
   // ----------------------------
   // Update page titles
   // ----------------------------
-  dotify.cityFocus.updateTitles = function(cityName) {
+  dotify.utils.updateTitles = function(cityName) {
     document.getElementById("cityName").textContent = cityName;
     document.getElementById("cityWeekday").textContent = dayName;
   };
@@ -16,18 +16,18 @@
   // ----------------------------
   // Update main card info
   // ----------------------------
-  dotify.cityFocus.updateCardTemp = function(text) {
-    document.getElementById("card1").textContent = text;
+  dotify.utils.updateCardTemp = function(text) {
+    document.getElementById("card1").textContent = text +celsius;
   };
 
-  dotify.cityFocus.updateCardWind = function(text) {
+  dotify.utils.updateCardWind = function(text) {
     document.getElementById("cardWind").textContent = text;
   };
 
   // ----------------------------
   // Update weekly forecast cards
   // ----------------------------
-  dotify.cityFocus.updateSmallWeekCards = function(days, dayWeekNumber, cityData,celsius) {
+  dotify.utils.updateSmallWeekCards = function(days, dayWeekNumber, cityData) {
     const weekcards = document.getElementById("weekcards");
 
     const weekSliceStart = days.slice(dayWeekNumber);
@@ -61,10 +61,10 @@
   // ----------------------------
   // Get weather data object for city
   // ----------------------------
-  dotify.cityFocus.getCityObj = function(cityName) {
+  dotify.utils.getCityObj = function(cityName) {
     const key = `${cityName}_daily`;
     console.log("Fetching weather data for:", key);
     return dotify.weatherData[key];
   };
 
-})();
+

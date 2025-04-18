@@ -1,7 +1,8 @@
 // dotify.js
 window.dotify = {
     weatherData: {},
-    cityFocus: {},
+    utils: {},
+    preferences:{},
     components: {}
   };
   

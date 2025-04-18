@@ -1,7 +1,8 @@
 ---
 layout: "layout.njk"
 ---
-<script src="./src/cityFocus.js"></script>
+<script src="./src/utils.js"></script>
+<script src="./src/preferences.js"></script>
  <!-- Javascript -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -11,13 +12,13 @@ layout: "layout.njk"
     const dayWeekNumber = today.getDay();// return a number  from 0 (Sunday) to 6 (Saturday)
     console.log(dayWeekNumber);
 
-    const cityChoice ="amsterdam";
-    const celsius =" °C";    
-    const cityData = dotify.cityFocus.getCityObj(cityChoice);
-    dotify.cityFocus.updateTitles(cityChoice);
-    dotify.cityFocus.updateCardTemp(cityData.daily.temperature_2m_max[0]+celsius);
-    dotify.cityFocus.updateCardWind(cityData.daily.wind_speed_10m_max[0]);
-    dotify.cityFocus.updateSmallWeekCards(days, dayWeekNumber, cityData,celsius);
+    const cityChoice = dotify.preferences.city;
+    
+    const cityData = dotify.utils.getCityObj(cityChoice);
+    dotify.utils.updateTitles(cityChoice);
+    dotify.utils.updateCardTemp(cityData.daily.temperature_2m_max[0]);
+    dotify.utils.updateCardWind(cityData.daily.wind_speed_10m_max[0]);
+    dotify.utils.updateSmallWeekCards(days, dayWeekNumber, cityData);
 });
 
 </script>
