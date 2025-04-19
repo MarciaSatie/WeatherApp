@@ -9,7 +9,7 @@ title: Dashboard
     
     document.addEventListener("DOMContentLoaded", () => {
     const cityList = dotify.preferences.arrayCity;
-     const suffix = "_CB"
+     const suffix = "_CB";
     const retrieveStringArray = localStorage.getItem("favoriteCities");
     const favoriteCitiesList = JSON.parse(retrieveStringArray) || [];
 
@@ -21,7 +21,7 @@ title: Dashboard
         const column = document.createElement("div");
         column.classList.add("is-size-6", "mb-4");
 
-       ;
+       //if city is inside of array favoriteCitiesList, isChecked value  is "checked" or will be empt.
         const isChecked = favoriteCitiesList.includes(city) ? "checked" : "";
 
         const cityNameFix = dotify.utils.formatName(city);
@@ -58,6 +58,10 @@ title: Dashboard
 
     }
 
+    function resetFavoriteCities(event){
+        localStorage.removeItem("favoriteCities");
+        location.reload();// refresh the page
+    }
 </script>
 
 <!-- HTML code -->
@@ -82,7 +86,8 @@ title: Dashboard
                         <br/>
                         <div>
                             <button class="button is-info is-dark m-1 p-3" type="submit" onclick="updateFavoriteCities(event)">Apply Changes</button>
-                          </div>
+                            <button class="button is-info is-dark m-1 p-3" type="submit" onclick="resetFavoriteCities(event)">Reset Favorites</button>
+                        </div>
                     </div>
                 </div>
 
@@ -91,6 +96,7 @@ title: Dashboard
                     <div class="has-text-centered">
                         <h1 class="is-size-4 has-text-weight-semibold has-text-white">Favority Cities </h1>
                     </div> 
+                    
                     <div class="box column has-background-info-light m-5">
     
                         <div  class="checkboxes ">
@@ -101,7 +107,8 @@ title: Dashboard
                         <br/>
                         <div>
                             <button id="btnPref" class="button is-info is-dark m-1 p-3" type="submit" onclick="dotify.preferences.btnPref(event)">Apply Changes</button>
-                          </div>
+                        </div>
+                        
                     </div>
                 </div>
 
