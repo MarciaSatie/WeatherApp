@@ -64,6 +64,9 @@ reference:https://www.w3schools.com/js/js_window_location.asp
 event -> carries all the information from action click and it is passed as a parameter inside of the function myFunction
 reference: https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget
 
+**JSON.parse and JSON Strigfy**(at preference.njk) As adding direct the array to localStorage will transform everything in a unique string, I need somethinf that will tranform all array's code ina  string. 
+reference: https://www.geeksforgeeks.org/how-to-store-an-array-in-localstorage/
+
 **Regex** (at file: header.njk): Regular expression, with a partten of cahracters, allowed me to take of specific characters from a string, using .replace()
 reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Character_classes
            https://www.debuggex.com/cheatsheet/regex/javascript
@@ -71,3 +74,4 @@ regex : /\/+$/ =>
 /content/ -> what is between slashes will be count in cosideration for regex .
 \/+ ->  To match this / character literally (thsi what I want to get rid off) , escape it with itself. In other words to search for \ use \// (+ -> 1 more, at this case to repit "/" to achive \//).
 $ -> end of the string
+
