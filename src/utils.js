@@ -156,3 +156,33 @@ dotify.utils.changeCity=(city)=>{
     dotify.utils.updateSmallWeekCards(days, dayWeekNumber, cityData);
 
 }
+
+dotify.utils.loadCardList=(cityList, divID)=>{
+  const cityCards = document.getElementById(divID);
+  const todayIndex = 0;
+  let count = 0;
+    cityList.forEach(city => {
+      const column = document.createElement("div");
+      column.className = "column is-one-fifth";
+
+      //console.log(currentCity);
+      const cityData =  dotify.utils.getCityObj(city);
+      const min = cityData.daily.temperature_2m_min[todayIndex];
+      const max = cityData.daily.temperature_2m_max[todayIndex];
+
+      column.innerHTML = `
+          <a href="/index/" id="${city}" onclick="myFunction(event)">
+              <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center min-height: 250px;">
+                  <h1 class="title is-size-5">${dotify.utils.formatName(city)}</h1>
+                  <img src="/assets/sun.png" class="image is-64x64">
+                  <p>Min ${min} ${celsius}</p>
+                  <p>Max ${max} ${celsius}</p>
+              </div>
+          
+
+      `;
+
+      cityCards.appendChild(column);
+    count++;
+    });
+} 

@@ -30,12 +30,12 @@
 
          const menuIsActive = menuLinks.map(menuLink =>{
           const linkTrinned = menuLink.href.replace(/\/+$/, '');// Regex to take of last "/"
-          console.log(currentPath+"||"+linkTrinned);
+          //console.log(currentPath+"||"+linkTrinned);
           if(currentPath.indexOf(linkTrinned) !==-1){
-            console.log("is a match");
+            //console.log("is a match");
             return `<a class="navbar-item has-text-weight-bold" href=${menuLink.href}> ${menuLink.text} </a>`
           }else{
-            console.log("is NOT a match");
+            //console.log("is NOT a match");
             return `<a class="navbar-item" href=${menuLink.href}> ${menuLink.text} </a>`
           } ;
           
@@ -86,63 +86,110 @@
 <script src="/src/utils.js"></script>
  <!-- Javascript -->
 <script>
-    let currentCity ="";
+    
     document.addEventListener("DOMContentLoaded", () => {
-        //Updating Title
-        document.getElementById("cityName").textContent = "Dashboard";
+    const cityList = dotify.preferences.arrayCity;
+     const suffix = "_CB"
+    const retrieveStringArray = localStorage.getItem("favoriteCities");
+    const favoriteCitiesList = JSON.parse(retrieveStringArray) || [];
 
-        //Filling city cards
-        const cityCards = document.getElementById("dashcards");
-        const cityList = dotify.preferences.arrayCity;
-        const cityListNameFix = dotify.utils.formattedCities(cityList);
-        const todayIndex = 0;
-        let count = 0;
-        
+    // Updating Title
+    document.getElementById("cityName").textContent = "Preferences";
+    const cardPrefrences = document.getElementById("cardPrefrences");
 
-        cityList.forEach(city => {
-            const column = document.createElement("div");
-            column.className = "column is-one-fifth";
-            currentCity= city;
-            console.log(currentCity);
-            const cityData =  dotify.utils.getCityObj(city);
-            const min = cityData.daily.temperature_2m_min[todayIndex];
-            const max = cityData.daily.temperature_2m_max[todayIndex];
+    cityList.forEach(city => {
+        const column = document.createElement("div");
+        column.classList.add("is-size-6", "mb-4");
 
-            column.innerHTML = `
-                 <a href="/index/" id="${city}" onclick="myFunction(event)">
-                    <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center min-height: 250px;">
-                        <h1 class="title is-size-5">${cityListNameFix[count]}</h1>
-                        <img src="/assets/sun.png" class="image is-64x64">
-                        <p>Min ${min} ${celsius}</p>
-                        <p>Max ${max} ${celsius}</p>
-                    </div>
-                
+       ;
+        const isChecked = favoriteCitiesList.includes(city) ? "checked" : "";
 
-            `;
+        const cityNameFix = dotify.utils.formatName(city);
+        column.innerHTML = `
+            <li>
+                <label class="checkbox">
+                    <input id="${city + suffix}" type="checkbox" ${isChecked} />
+                    ${cityNameFix}
+                </label>
+            </li>
+        `;
 
-            cityCards.appendChild(column);
-        count++;
-        });
+        cardPrefrences.appendChild(column);
     });
+});
 
-    function myFunction(event) {
-        try {
-            const cityId = event.currentTarget.id; // to get id from <a>, event carries details about the click action.
-            
-            dotify.preferences.setCity(cityId);// Using this funciton to save cityId information to LocalStorage.
-            //alert("Changing city to: " + cityId);
+    function updateFavoriteCities(event){
+        console.log("you clicked the button");
+        const cityList = dotify.preferences.arrayCity;
+        const suffix = "_CB";
+        let checkedList =[];
 
-            window.location.href = `/index/`; // returns the href (URL) of the current page, redirecting the user to /index/
+        cityList.forEach(city=>{
+            var checkBox = document.getElementById(city+suffix);
+            if (checkBox.checked == true){
+                //console.log(city);
+                checkedList.push(city);
+                
+            }
+        });
+        console.log(checkedList);
+        let arrayToString = JSON.stringify(checkedList);   
+        localStorage.setItem("favoriteCities", arrayToString);
 
-        } catch (error) {
-            alert(error);
     }
-}
+
 </script>
 
 <!-- HTML code -->
 <section class="section">
-    prefrences
+    <div class="container">
+        <div class="box notification is-info is-dark">
+           
+            <div class="columns is-desktop">
+
+                <!--City Favorities-->
+                <div class="column is-6"> 
+                    <div class="has-text-centered">
+                        <h1 class="is-size-4 has-text-weight-semibold has-text-white">Favority Cities </h1>
+                    </div> 
+                    <div class="box column has-background-info-light m-5">
+    
+                        <div  class="checkboxes ">
+                            <ul id="cardPrefrences">
+    
+                            </ul>
+                        </div>
+                        <br/>
+                        <div>
+                            <button class="button is-info is-dark m-1 p-3" type="submit" onclick="updateFavoriteCities(event)">Apply Changes</button>
+                          </div>
+                    </div>
+                </div>
+
+                <!--Other Settings-->
+                <div class="column is-6"> 
+                    <div class="has-text-centered">
+                        <h1 class="is-size-4 has-text-weight-semibold has-text-white">Favority Cities </h1>
+                    </div> 
+                    <div class="box column has-background-info-light m-5">
+    
+                        <div  class="checkboxes ">
+                            <ul id="cardSettings">
+    
+                            </ul>
+                        </div>
+                        <br/>
+                        <div>
+                            <button id="btnPref" class="button is-info is-dark m-1 p-3" type="submit" onclick="dotify.preferences.btnPref(event)">Apply Changes</button>
+                          </div>
+                    </div>
+                </div>
+
+                </div>
+                
+              </div>
+        </div>
+    </div>
 </section>
 <br><br>
 

@@ -18,12 +18,12 @@
 
          const menuIsActive = menuLinks.map(menuLink =>{
           const linkTrinned = menuLink.href.replace(/\/+$/, '');// Regex to take of last "/"
-          console.log(currentPath+"||"+linkTrinned);
+          //console.log(currentPath+"||"+linkTrinned);
           if(currentPath.indexOf(linkTrinned) !==-1){
-            console.log("is a match");
+            //console.log("is a match");
             return `<a class="navbar-item has-text-weight-bold" href=${menuLink.href}> ${menuLink.text} </a>`
           }else{
-            console.log("is NOT a match");
+            //console.log("is NOT a match");
             return `<a class="navbar-item" href=${menuLink.href}> ${menuLink.text} </a>`
           } ;
           

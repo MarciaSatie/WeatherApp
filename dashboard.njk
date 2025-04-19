@@ -6,51 +6,38 @@ title: Dashboard
 <script src="/src/utils.js"></script>
  <!-- Javascript -->
 <script>
-    let currentCity ="";
+
     document.addEventListener("DOMContentLoaded", () => {
         //Updating Title
         document.getElementById("cityName").textContent = "Dashboard";
-
-        //Filling city cards
-        const cityCards = document.getElementById("dashcards");
-        const cityList = dotify.preferences.arrayCity;
-        const cityListNameFix = dotify.utils.formattedCities(cityList);
-        const todayIndex = 0;
-        let count = 0;
         
+        
+        //Add List of Favorite cities to HTML ------------------------------------------------
+        const favDiv = document.getElementById("favCityCardsContainer");
+        const cityList = dotify.preferences.arrayCity;
 
-        cityList.forEach(city => {
-            const column = document.createElement("div");
-            column.className = "column is-one-fifth";
-            currentCity= city;
-            console.log(currentCity);
-            const cityData =  dotify.utils.getCityObj(city);
-            const min = cityData.daily.temperature_2m_min[todayIndex];
-            const max = cityData.daily.temperature_2m_max[todayIndex];
+        const retriveStringArray = localStorage.getItem("favoriteCities");
+        //console.log("retriveStringArray:"+ retriveStringArray);
+        const favoriteCitiesList = JSON.parse(retriveStringArray);
+        //console.log("favoriteCitiesList:"+ favoriteCitiesList);
 
-            column.innerHTML = `
-                 <a href="/index/" id="${city}" onclick="myFunction(event)">
-                    <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center min-height: 250px;">
-                        <h1 class="title is-size-5">${cityListNameFix[count]}</h1>
-                        <img src="/assets/sun.png" class="image is-64x64">
-                        <p>Min ${min} ${celsius}</p>
-                        <p>Max ${max} ${celsius}</p>
-                    </div>
-                
+        //if cityList.lenght is bigger than 0, remove is-hidden from favDiv div. else add it.
+        if(favoriteCitiesList !== null && favoriteCitiesList !== "" && favoriteCitiesList.length > 0){
+            dotify.utils.loadCardList(favoriteCitiesList,"favCityCards");
+            favDiv.classList.remove("is-hidden")
+        }else {
+            favDiv.classList.add("is-hidden");   
+        }
+       
 
-            `;
-
-            cityCards.appendChild(column);
-        count++;
-        });
+        //Add List of All cities to HTML------------------------------------------------------
+        dotify.utils.loadCardList(cityList,"dashcards");
     });
 
     function myFunction(event) {
         try {
             const cityId = event.currentTarget.id; // to get id from <a>, event carries details about the click action.
-            
-            dotify.preferences.setCity(cityId);// Using this funciton to save cityId information to LocalStorage.
-            //alert("Changing city to: " + cityId);
+            localStorage.setItem("selectedCity", cityId);
 
             window.location.href = `/index/`; // returns the href (URL) of the current page, redirecting the user to /index/
 
@@ -63,6 +50,24 @@ title: Dashboard
 <!-- HTML code -->
 <section class="section">
     <div class="container">
+
+        <!-- Favorite Cities Cards -->
+        <div id="favCityCardsContainer" class="is-hidden">
+            <div class="notification is-info is-dark">
+                <h1 class="is-size-4 has-text-weight-semibold has-text-white pb-5">Favorite Cities</h1>
+                <div  id="favCityCards" class="columns is-multiline is-centered has-background-primary-100">
+
+                    <!--This area will be filled using Javascript-->
+                </div>
+            </div>
+            <!--This area will be filled using Javascript-->
+        </div>
+        <br/><br/>
+
+        <!-- All Cities Cards -->
+        <div class="notification is-info is-dark">
+            <h1 class="is-size-4 has-text-weight-semibold has-text-white"> Cities</h1>
+        </div>
         <div id="dashcards" class="columns is-multiline is-centered">
 
             <!--This area will be filled using Javascript-->
