@@ -21,7 +21,7 @@ title: Dashboard
         const column = document.createElement("div");
         column.classList.add("is-size-6", "mb-4");
 
-       //if city is inside of array favoriteCitiesList, isChecked value  is "checked" or will be empt.
+       //if city is inside of array favoriteCitiesList, isChecked value  is "checked" or will be empt ( ternary expression).
         const isChecked = favoriteCitiesList.includes(city) ? "checked" : "";
 
         const cityNameFix = dotify.utils.formatName(city);

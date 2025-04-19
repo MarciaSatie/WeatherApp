@@ -64,6 +64,9 @@ reference:https://www.w3schools.com/js/js_window_location.asp
 event -> carries all the information from action click and it is passed as a parameter inside of the function myFunction
 reference: https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget
 
+**Tenary Expression**(at preference.njk) Just a simpler and easy to read way to write if and else. I particularly I like, and I am trying to use it more.
+reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator
+
 **JSON.parse and JSON Strigfy**(at preference.njk) As adding direct the array to localStorage will transform everything in a unique string, I need somethinf that will tranform all array's code ina  string. 
 reference: https://www.geeksforgeeks.org/how-to-store-an-array-in-localstorage/
 
