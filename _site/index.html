@@ -47,7 +47,7 @@
   });
 </script>
 
-<header class="hero is-warning">
+<header class="hero is-warning p-2">
   <div class="container">
     <div class="columns is-vcentered">
       <div class="column">
@@ -56,7 +56,7 @@
       
       
       <div class="column is-flex is-flex-direction-column is-align-items-center is-justify-content-center ">
-        <h1 class="title" id="cityName" ></h1>
+        <h1 class="title is-size-1" id="cityName" ></h1>
         <h2 class="subtitle" id="cityWeekday"></h2>
          <!--NavBar DropDwond Menu-->
         <div id="menuDropDown" class="navbar-dropdown" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -106,6 +106,9 @@
             
             <!-- Max Temp and Max Wind -->
             <div class="cell">
+                <div class="notification is-info is-dark">
+                    <h1 class="is-size-4 has-text-weight-semibold has-text-white">Today's information</h1>
+                </div>
                 <div class="fixed-grid">
                     <div class="grid">
                         <div class="cell is-col-span-2">
@@ -140,7 +143,10 @@
 
 </section>
 <section class="section">
-    <div class="container">
+    <div class="container ">
+        <div class="notification is-info is-dark">
+            <h1 class="is-size-5 has-text-weight-semibold  has-text-white ">Check the weather for the next 6 days</h1>
+        </div>
         <div id="weekcards" class="columns is-multiline is-centered">
 
             <!--This area will be filled using Javascript-->

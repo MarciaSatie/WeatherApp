@@ -57,4 +57,17 @@ reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glo
 **LoacalStorage** (at file: utils.js amd index.njk): Saves an information even after the page reloads or browser restarts.
 reference: https://www.geeksforgeeks.org/javascript-localstorage/
 
+**WindowLocation**(at file header.njk): it was used window.location.pathname to return the path and filename of the current page.
+reference:https://www.w3schools.com/js/js_window_location.asp
 
+**event.currentTarget.id**(at dashboard.njk) this will return the value from the ID from teh module related to action click (at this case <a>).
+event -> carries all the information from action click and it is passed as a parameter inside of the function myFunction
+reference: https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget
+
+**Regex** (at file: header.njk): Regular expression, with a partten of cahracters, allowed me to take of specific characters from a string, using .replace()
+reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Character_classes
+           https://www.debuggex.com/cheatsheet/regex/javascript
+regex : /\/+$/ => 
+/content/ -> what is between slashes will be count in cosideration for regex .
+\/+ ->  To match this / character literally (thsi what I want to get rid off) , escape it with itself. In other words to search for \ use \// (+ -> 1 more, at this case to repit "/" to achive \//).
+$ -> end of the string

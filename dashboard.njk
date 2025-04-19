@@ -46,19 +46,16 @@ title: Dashboard
     });
 
     function myFunction(event) {
-    event.preventDefault(); // stop the default navigation (we’ll do it manually)
-
-    try {
-        const cityId = event.currentTarget.id;
-        
-            dotify.preferences.setCity(cityId);
+        try {
+            const cityId = event.currentTarget.id; // to get id from <a>, event carries details about the click action.
+            
+            dotify.preferences.setCity(cityId);// Using this funciton to save cityId information to LocalStorage.
             //alert("Changing city to: " + cityId);
 
-        // Pass city name as query param
-        window.location.href = `/index/?city=${cityId}`;
+            window.location.href = `/index/`; // returns the href (URL) of the current page, redirecting the user to /index/
 
-    } catch (error) {
-        alert(error);
+        } catch (error) {
+            alert(error);
     }
 }
 </script>

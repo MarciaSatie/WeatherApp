@@ -47,7 +47,7 @@
   });
 </script>
 
-<header class="hero is-warning">
+<header class="hero is-warning p-2">
   <div class="container">
     <div class="columns is-vcentered">
       <div class="column">
@@ -56,7 +56,7 @@
       
       
       <div class="column is-flex is-flex-direction-column is-align-items-center is-justify-content-center ">
-        <h1 class="title" id="cityName" ></h1>
+        <h1 class="title is-size-1" id="cityName" ></h1>
         <h2 class="subtitle" id="cityWeekday"></h2>
          <!--NavBar DropDwond Menu-->
         <div id="menuDropDown" class="navbar-dropdown" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -126,19 +126,16 @@
     });
 
     function myFunction(event) {
-    event.preventDefault(); // stop the default navigation (we’ll do it manually)
-
-    try {
-        const cityId = event.currentTarget.id;
-        
-            dotify.preferences.setCity(cityId);
+        try {
+            const cityId = event.currentTarget.id; // to get id from <a>, event carries details about the click action.
+            
+            dotify.preferences.setCity(cityId);// Using this funciton to save cityId information to LocalStorage.
             //alert("Changing city to: " + cityId);
 
-        // Pass city name as query param
-        window.location.href = `/index/?city=${cityId}`;
+            window.location.href = `/index/`; // returns the href (URL) of the current page, redirecting the user to /index/
 
-    } catch (error) {
-        alert(error);
+        } catch (error) {
+            alert(error);
     }
 }
 </script>
