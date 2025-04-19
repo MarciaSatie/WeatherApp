@@ -19,7 +19,7 @@ dotify.utils = dotify.utils || {};
 // Update page titles (specific for CityFocus page)
 // ----------------------------
 dotify.utils.updateTitles = (cityName) => {
-  document.getElementById("cityName").textContent = cityName;
+  document.getElementById("cityName").textContent = dotify.utils.formatName(cityName);
   document.getElementById("cityWeekday").textContent = dayName;
 };
 
@@ -106,7 +106,7 @@ dotify.utils.getHourObj = (cityName) => {
 };
 
 // ----------------------------
-// Get each word from teh array to replace "_" n+by space and the First letter to uppercase:
+// Get each word from teh array to replace "_" by space and the First letter to uppercase:
 // replaceAll: will replace "_" by space
 // split(space) to create an array if there is more than 1 word
 // map.word
@@ -128,6 +128,14 @@ dotify.utils.formattedCities = (arrayCity) =>{
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
+
+// ----------------------------
+// Like FormattedCities will will change the First Letter from each word to uppercase, but for  asingle variable.
+// ----------------------------
+dotify.utils.formatName=(currentName)=>{
+  return currentName.split('_').map(word=>capitalizeFirstLetter(word)).join(' ');
+}
+
 
 dotify.utils.changeCity=(city)=>{
   
