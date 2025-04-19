@@ -83,6 +83,7 @@
 <script src="/src/utils.js"></script>
  <!-- Javascript -->
 <script>
+    let currentCity ="";
     document.addEventListener("DOMContentLoaded", () => {
         //Updating Title
         document.getElementById("cityName").textContent = "Dashboard";
@@ -90,31 +91,53 @@
         //Filling city cards
         const cityCards = document.getElementById("dashcards");
         const cityList = dotify.preferences.arrayCity;
-
+        const cityListNameFix = dotify.utils.formattedCities(cityList);
         const todayIndex = 0;
         let count = 0;
+        
 
         cityList.forEach(city => {
-        const column = document.createElement("div");
-        column.className = "column is-one-fifth";
+            const column = document.createElement("div");
+            column.className = "column is-one-fifth";
+            currentCity= city;
+            console.log(currentCity);
+            const cityData =  dotify.utils.getCityObj(city);
+            const min = cityData.daily.temperature_2m_min[todayIndex];
+            const max = cityData.daily.temperature_2m_max[todayIndex];
 
-        const cityData =  dotify.utils.getCityObj(city);
-        const min = cityData.daily.temperature_2m_min[todayIndex + count];
-        const max = cityData.daily.temperature_2m_max[todayIndex + count];
+            column.innerHTML = `
+                 <a href="/index/" id="${city}" onclick="myFunction(event)">
+                    <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center min-height: 250px;">
+                        <h1 class="title is-size-5">${cityListNameFix[count]}</h1>
+                        <img src="/assets/sun.png" class="image is-64x64">
+                        <p>Min ${min} ${celsius}</p>
+                        <p>Max ${max} ${celsius}</p>
+                    </div>
+                
 
-        column.innerHTML = `
-            <div class="box has-background-primary is-flex is-flex-direction-column is-align-items-center">
-            <h1 class="title is-size-5">${city}</h1>
-            <img src="assets/sun.png" class="image is-64x64">
-            <p>Min ${min} ${celsius}</p>
-            <p>Max ${max} ${celsius}</p>
-            </div>
-        `;
+            `;
 
-        cityCards.appendChild(column);
+            cityCards.appendChild(column);
         count++;
         });
     });
+
+    function myFunction(event) {
+    event.preventDefault(); // stop the default navigation (we’ll do it manually)
+
+    try {
+        const cityId = event.currentTarget.id;
+        
+            dotify.preferences.setCity(cityId);
+            //alert("Changing city to: " + cityId);
+
+        // Pass city name as query param
+        window.location.href = `/index/?city=${cityId}`;
+
+    } catch (error) {
+        alert(error);
+    }
+}
 </script>
 
 <!-- HTML code -->

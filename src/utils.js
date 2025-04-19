@@ -16,7 +16,7 @@ window.dotify = window.dotify || {};
 dotify.utils = dotify.utils || {};
 
 // ----------------------------
-// Update page titles
+// Update page titles (specific for CityFocus page)
 // ----------------------------
 dotify.utils.updateTitles = (cityName) => {
   document.getElementById("cityName").textContent = cityName;
@@ -24,7 +24,7 @@ dotify.utils.updateTitles = (cityName) => {
 };
 
 // ----------------------------
-// Update main card info
+// Update main card info (specific for CityFocus page)
 // ----------------------------
 dotify.utils.updateCardRightNow = (text1, text2) => {
   const divParent = document.getElementById("cardRN");
@@ -49,7 +49,7 @@ dotify.utils.updateCardWind = (text) => {
 };
 
 // ----------------------------
-// Update weekly forecast cards
+// Update weekly forecast cards (specific for CityFocus page)
 // ----------------------------
 dotify.utils.updateSmallWeekCards = (days, dayWeekNumber, cityData) => {
   const weekcards = document.getElementById("weekcards");
@@ -104,3 +104,47 @@ dotify.utils.getHourObj = (cityName) => {
   console.log("Fetching weather data for:", key);
   return dotify.weatherData[key];
 };
+
+// ----------------------------
+// Get each word from teh array to replace "_" n+by space and the First letter to uppercase:
+// replaceAll: will replace "_" by space
+// split(space) to create an array if there is more than 1 word
+// map.word
+// ----------------------------
+dotify.utils.formattedCities = (arrayCity) =>{
+  const newArray = arrayCity.map(city => {
+    // Split the city into words
+    const words = city.split('_');
+
+    // Capitalize each word
+    const capitalizedWords = words.map(word => capitalizeFirstLetter(word));
+
+    // Join the words back together
+    return capitalizedWords.join(' ');
+  });
+  return newArray;
+}
+//reference: https://coreui.io/blog/how-to-capitalize-the-first-letter-in-javascript/#method-1-using-charat-touppercase-and-slice
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+dotify.utils.changeCity=(city)=>{
+  
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const today = new Date();// javascript premade object that returns current day.
+    const dayWeekNumber = today.getDay();// return a number  from 0 (Sunday) to 6 (Saturday)
+    console.log(dayWeekNumber);
+    let hour = today.getHours();   
+    console.log(hour);
+    const cityChoice = city;
+    
+    const cityData = dotify.utils.getCityObj(cityChoice);
+    const cityHourly = dotify.utils.getHourObj(cityChoice);
+    dotify.utils.updateCardRightNow(cityHourly.hourly.temperature_2m[hour],cityHourly.hourly.wind_speed_10m[hour])
+    dotify.utils.updateTitles(cityChoice);
+    dotify.utils.updateCardTemp(cityData.daily.temperature_2m_max[0]);
+    dotify.utils.updateCardWind(cityData.daily.wind_speed_10m_max[0]);
+    dotify.utils.updateSmallWeekCards(days, dayWeekNumber, cityData);
+
+}

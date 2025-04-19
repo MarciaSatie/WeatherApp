@@ -4,15 +4,6 @@ layout: "layout.njk"
 <script src="./src/utils.js"></script>
 <script src="./src/preferences.js"></script>
  <!-- Javascript -->
-<script>
-   document.addEventListener("DOMContentLoaded", () => {
-  // Get city from localStorage or fallback to a default
-  const savedCity = localStorage.getItem("selectedCity") || "cork";
-  dotify.utils.changeCity(savedCity);
-});
-
-
-</script>
 
 <!-- HTML code -->
 <section>
@@ -31,21 +22,21 @@ layout: "layout.njk"
                             <div class="box has-background-primary">
                                 <h1 class="title is-size-5">Right Now</h1>
             
-                                <p id="cardRN" ></p>
+                                <p id="cardRN_CD" ></p>
                             </div>
                         </div>
-                        <div class="cell">
+                        <div class="cell_CD">
                             <div class="box has-background-primary">
                                 <h1 class="title is-size-5">Max Temp</h1>
             
-                                <p id="card1" ></p>
+                                <p id="card1_CD" ></p>
                             </div>
                         </div>
                         <div class="cell">
                             <div class="box has-background-primary">
                                 <h1 class="title is-size-5">Max Wind</h1>
             
-                                <p id="cardWind" ></p>
+                                <p id="cardWind_CD" ></p>
                             </div>
                         </div>
     

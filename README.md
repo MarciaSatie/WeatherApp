@@ -48,11 +48,13 @@ JavaScript: Handles data fetching and DOM manipulation.​
 
 
 🙌 Acknowledgments
-**document.createElement**(at file: cityFocus.js): uses Javascript to create a new HTML element at this case a div.
+**document.createElement**(at file: utils.js): uses Javascript to create a new HTML element at this case a div.
 reference: https://www.w3schools.com/jsref/met_document_createelement.asp
 
+**replaceAll** (at file: utils.js): replace all specified string (or char) at whole variable.
+reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll
 
-
-
+**LoacalStorage** (at file: utils.js amd index.njk): Saves an information even after the page reloads or browser restarts.
+reference: https://www.geeksforgeeks.org/javascript-localstorage/
 
 
