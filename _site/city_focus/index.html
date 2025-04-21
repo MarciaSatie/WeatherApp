@@ -94,6 +94,7 @@
     console.log("city: "+city);
     const savedCity = city|| localStorage.getItem("selectedCity") || "waterford";
     console.log("savedCity: "+savedCity);
+
     dotify.utils.changeCity(savedCity);
 });
 
@@ -106,7 +107,7 @@
         <div class="grid">
 
             <div class="cell">
-                <img id ="cfIMG" class="image is-128sx128">
+                <img id ="cfIMG" class="image is-256x256">
             </div>
             
             <!-- Max Temp and Max Wind -->
@@ -118,20 +119,20 @@
                     <div class="grid">
                         <div class="cell is-col-span-2">
                             <div class="box has-background-primary ">
-                                <h1 class="title is-size-5">Right Now</h1>
+                                <h1 id="rn" class="title is-size-5"></h1><!--Tirtle Right Now-->
             
                                 <p id="cardRN" ></p>
                             </div>
                         </div>
                         <div class="cell">
-                            <div class="box has-background-primary">
+                            <div class="box ">
                                 <h1 class="title is-size-5">Max Temp</h1>
             
                                 <p id="card1" ></p>
                             </div>
                         </div>
                         <div class="cell">
-                            <div class="box has-background-primary">
+                            <div class="box ">
                                 <h1 class="title is-size-5">Max Wind</h1>
             
                                 <p id="cardWind" ></p>
@@ -146,6 +147,31 @@
 
     </div>
 
+</section>
+<section class="section">
+    <div class="container ">
+        <div class="notification is-info ">
+            <h1 class="is-size-5 has-text-weight-semibold  has-text-white ">Check the weather for the next hours</h1>
+        </div>
+        <div class="fixed grid">
+            <div class="grid">
+                <div id="weatherByHour"
+                    class="is-flex is-flex-direction-row is-align-items-stretch px-4"
+                    style="overflow-x: auto; gap: 1rem; width: 100%;">
+                <!-- Cards will be added here via JS -->
+            </div>
+           
+                
+                
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <!--Wehter for the next 6 days-->
 </section>
 <section class="section">
     <div class="container ">
