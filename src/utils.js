@@ -12,7 +12,7 @@ const dayName = days[today.getDay()]; // e.g., "Friday"
 const dayWeekNumber = today.getDay();// return a number  from 0 (Sunday) to 6 (Saturday)
 console.log(dayWeekNumber);
 let hour = today.getHours();   
-console.log(hour);
+let min = today.getMinutes();
 
 const celsius = " °C";
 
@@ -32,6 +32,8 @@ dotify.utils.updateTitles = (cityName) => {
 // Update main card info (specific for CityFocus page)
 // ----------------------------
 dotify.utils.updateCardRightNow = (text1, text2) => {
+  const h1Title = document.getElementById("rn");
+  h1Title.innerHTML = `Right Now  ⏰ ${hour}:${min}`;
   const divParent = document.getElementById("cardRN");
   divParent.innerHTML = ""; // clear existing content
 
@@ -53,8 +55,6 @@ dotify.utils.updateCardWind = (text) => {
   document.getElementById("cardWind").textContent = text;
 };
 
-
-
 dotify.utils.changeCity=(city)=>{
 
   const cityChoice = city;
@@ -71,8 +71,9 @@ dotify.utils.changeCity=(city)=>{
   dotify.utils.updateSmallWeekCards(days, dayWeekNumber, cityData);
   img.src =dotify.utils.getImg(tempNow); 
   
-
 }
+
+
 
 // ----------------------------
 // Update weekly forecast cards (specific for CityFocus page)
@@ -201,11 +202,10 @@ dotify.utils.loadCardList=(cityList, divID)=>{
                   <p>Min ${min} ${celsius}</p>
                   <p>Max ${max} ${celsius}</p>
               </div>
-          
-
       `;
 
       cityCards.appendChild(column);
     count++;
     });
 } 
+

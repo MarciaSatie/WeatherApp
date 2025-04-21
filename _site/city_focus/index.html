@@ -94,6 +94,7 @@
     console.log("city: "+city);
     const savedCity = city|| localStorage.getItem("selectedCity") || "waterford";
     console.log("savedCity: "+savedCity);
+
     dotify.utils.changeCity(savedCity);
 });
 
@@ -106,7 +107,7 @@
         <div class="grid">
 
             <div class="cell">
-                <img id ="cfIMG" class="image is-128sx128">
+                <img id ="cfIMG" class="image is-256x256">
             </div>
             
             <!-- Max Temp and Max Wind -->
@@ -118,7 +119,7 @@
                     <div class="grid">
                         <div class="cell is-col-span-2">
                             <div class="box has-background-primary ">
-                                <h1 class="title is-size-5">Right Now</h1>
+                                <h1 id="rn" class="title is-size-5"></h1><!--Tirtle Right Now-->
             
                                 <p id="cardRN" ></p>
                             </div>
@@ -146,6 +147,11 @@
 
     </div>
 
+    <div id="weatherByHour">
+
+    </div>
+
+    <!--Wehter for the next 6 days-->
 </section>
 <section class="section">
     <div class="container ">
