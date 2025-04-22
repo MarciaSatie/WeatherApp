@@ -81,7 +81,7 @@ dotify.utils.wetherByTime = (city) => {
   const hourcards = document.getElementById("weatherByHour");
   hourcards.innerHTML = ""; // clear previous content
 
-  for (let i = 0; i <= 6; i++) {
+  for (let i = 1; i <= 6; i++) {
     const cityHourly = dotify.utils.getHourObj(city);
     const tempNow = cityHourly.hourly.temperature_2m[hour + i];
     const weatherIMG = dotify.utils.getRandomImg();
